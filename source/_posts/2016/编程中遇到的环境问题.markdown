@@ -1,0 +1,76 @@
+layout: "post"
+title: "编程中遇到的环境问题"
+date: "2016-03-30 13:31"
+---
+## 纪录一些平时很少遇到的问题
+
+### android
+
+
+  >Error: Could not create the Jjavaava Virtual Machine.
+  >Error: A fatal exception has occurred. Program will exit.
+  >Invalid maximum heap size: -Xmx4gjava
+  >The specified size exceeds the maximum representable size.
+
+  64位机器错误的使用了32位的jdk，可以通过java －version命令查看java版本信息，如果里面没有带64位的相关字符，说明是32位的，需要更换jdk版本
+
+  在android当引入第三方lib或者新建lib之后，可能会出现这种编译错误
+
+  > java.lang.RuntimeException: Manifest merger failed : >uses-sdk:minSdkVersion 9 cannot be smaller than version 10 >declared in library xxxxx/androidManifest.xml
+  >Suggestion: use tools:overrideLibrary="lib1,lib2,...,libn" to >force usage
+
+
+  android在merge manifast的时候遇到lib的minSDKversion大于项目本身的minSDKVersion就会报错
+  解决:在AndroidManifest.xml文件中 标签中添加<uses-sdk tools:overrideLibrary="xxx.xxx.xxx"/>，其中的xxx.xxx.xxx为第三方库包名，如果存在多个库有此异常，则用逗号分割它们，例如：<uses-sdk tools:overrideLibrary="xxx.xxx.aaa, xxx.xxx.bbb"/>，这样做是为了项目中的AndroidManifest.xml和第三方库的AndroidManifest.xml合并时可以忽略最低版本限制。
+
+  [Android Suggestion: use tools:overrideLibrary="" to force usage][123ab315]
+
+  >Calendar calendar = Calendar.getInstance();
+  >calendar.set(Calendar.MONTH, 2);
+  >System.out.println("moth="+calendar.get(Calendar.MONTH));
+
+  输出居然不是想要的输出，查了下发现在给calender set之前最好调用一下calender.clear()方法。另外获取某个月有几天可以使用calendar.getActualMaximum(Calendar.DATE);同理，这个方法getActualMaximum，getActualMinimum可以获取各种feild的最大和最小值
+
+  [java获取某个月有几天][93192086]
+
+  [93192086]: http://bbs.csdn.net/topics/260084763 "java获取某个月有几天"
+
+  >UnsupportedMethodException
+  >Unsupported method: InstantRun.getRestartDexFile().
+  >The version of Gradle you connect to does not support that method.
+  >To resolve the problem you can change/upgrade the target version of Gradle you connect to.
+  >Alternatively, you can ignore this exception and read other information from the model.
+
+  更新了android gradle2.0.0插件之后android studio报错，是因为旧版的android studio不支持instantRun模式，需要更新android studio到2.0.0版本以上
+
+  >String.format("共％d人",list.size())不起作用，format之后显示的是“共％d人”
+  原因是括号中的“％d”使用的是汉语的"％号，应该换成英文的"%",写代码的时候要格外注意。
+
+
+
+  [123ab315]: http://blog.csdn.net/zhufuing/article/details/48018147 "【Android】Suggestion: use tools:overrideLibrary="" to force usage"
+
+
+  >某一天发现android studio下的工程全部变为java工程了，里面找不到android相关的东西，无法按照android项目编译
+  >SDK路径没有问题，代码也是最新的也没有问题，那只能是android studio的问题
+
+  后来发现是更新了android studio之后，在plugin里面的gradle插件失效了，没有选中，选中之后问题解决
+
+
+  >gradle编译的时候提示“Error:元素内容必须由格式正确的字符数据或标记组成。”，无法编译成功
+
+  网上有说是标签中间带空格的，比如"< string "或者 "< color ",全文搜索了下发现没有，后来查了下是在git合并文件的时候没有解决冲突，导致代码或者xml中有git冲突的标签“=========”和“<<<<<<<<<xxxxxxx”这种，删除之后问题解决
+
+  >在android studio编译的过程中，mac的dock中总是会出现java图标，手动关闭之后下次编译还是会出来
+
+  通过在.zshrc或者.bashrc中设置‘export JAVA_TOOL_OPTIONS="-Dapple.awt.UIElement=true"’解决
+
+  [Android Dev Tip: Hide that Annoying Java Icon][1310fe32]
+
+  [1310fe32]: https://bia.is/android-dev-tip-hide-that-annoying-java-icon/ "Android Dev Tip: Hide that Annoying Java Icon"
+### java
+
+  mac中直接在命令行编译java之后,调用java + 类名称 之后提示 *错误: 找不到或无法加载主类 XXXX*
+  这是因为我们通过IDE书写的java类顶部带有类名,那么你在执行的时候应该是带上全路径才可以,同时要通过 -cp . 把当前目录加入java的查找路径中才可以.
+
+  默认情况下通过反射获取class中method中参数名称的时候会获取到的是 *arg0*  *arg1* 这样的名称,不是原始代码中名称这是因为jvm在编译的过程中为了节约空间和内存把参数名称给精减了. 如果要获取真正的名称需要在编译的 *javac* 命令之后加上 *-parameters* ,要求编译器保留原始的参数名称就可以了
