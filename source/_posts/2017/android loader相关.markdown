@@ -5,7 +5,7 @@ date: "2017-02-15 14:16"
 ### android loader相关
 
 今天第一次学习使用loader,由于不想要使用CursorLoader,所以自己实现了一个asyncTaskLoader,结果发现不起作用,根本没有调用callBack的 *onLoadFinished* 方法.这不科学啊,看这官方示例写的呀.
-
+<!--more-->
 后来发现忽略了一个关键点,就是在自定义loader的 *onStartLoading* 方法中,有下面几句话:
 ```java
 @Override protected void onStartLoading() {
