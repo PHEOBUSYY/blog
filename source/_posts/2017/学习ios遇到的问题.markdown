@@ -36,3 +36,16 @@ if (self.page2 > 1) {
         }
 ```
 问题解决。
+
+### 如何强制要求view刷新
+今天在实现一个自定义view的时候遇到一个场景：比如这个自定义view有3个按钮，需要根据一个属性动态的计算view中按钮的位置和显示的按钮个数。
+之前在学习别人的自定义view的时候把所有的view初始化alloc和frame都放在了自定义view的 *initWithFrame* 方法中。之所以要放在这里而不放在 *init* 方法中的原因是 *init* 最终还是会调用 *initWithFrame* 方法，所以写在 *initWithFrame* 中是合适的。
+但这样就无法实现上面说的动态调整view内容的目的了。后来上网查了下资料发现应该是通过view的 *layoutSubView* 方法来控制其中所有的子view的frame。应为这个方法主要在一下场景下触发：
+1. 初始化（init）并不会触发这个方法。（LOL）
+2. 调用 *addSubView* 的时候会触发。
+3. 设置view *setFrame* 的时候会触发。前提是view的前后frame值发生了变化。
+4. 滚动ScrollView的时候会触发scrollView的这个方法。
+5. 旋转屏幕的时候会触发父view（当前viewController的view）中的这个方法。
+6. view的大小发生变化的时候会触发view的父类的这个方法。
+
+同时在官方文档中也说明，不要直接调用 *layoutSubView* 来更新view，应该通过 *setNeedsLayout* 来告诉系统在下一次更新UI的时候刷新view。如果需要立即刷新view的话，可以在调用完 *setNeedsLayout* 方法后调用 *layoutIfNeeded* 方法。
