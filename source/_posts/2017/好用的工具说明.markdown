@@ -1,0 +1,27 @@
+---
+layout: "post"
+title: "好用的工具说明"
+date: "2017-04-07 09:51"
+---
+  这个里面主要内容是一些好用的工具的安装和使用说明，还有注意事项等等。
+  注：这里主要是在mac平台上使用的
+<!--more-->  
+### autojump
+
+  autojump是一个命令行工具，主要是用来辅助我们列出或者直接跳转到平时经常用到的文件夹路径。
+
+  通过Homebrew安装：
+  >brew install autojump
+
+  安装成功之后，直接在命令行输入 *j* 之后，提示找不到这个命令，原因是没有配置环境变量。
+  这里用的是 *oh-my-zsh* 所以打开 *.zshrc* 文件，找到 *plugins=(git)*  在里面添加autojum，变成 *plugins=(git autojump)* ，然后在下面添加一句话：
+  >[[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && . ~/.autojump/etc/profile.d/autojump.sh
+
+  保存之后退出，这个时候再输入 *j* 命令就可以了。
+
+  下面列出常用的快捷命令：
+  1. *j* 列出常用的跳转目录
+  2. *j foo* 跳转到目录名称中包含 *foo* 这个word的目录
+  3. *jc bar* 跳转到子目录名称包含 *bar* 的目录
+  4. *jo foo* *jco foo* 通过finder打开包含 *foo* 这个word的目录
+  5. *j in* 进入序号更高的路径
