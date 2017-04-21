@@ -4,6 +4,7 @@ title: "IOS知识点集合"
 date: "2017-04-13 13:50"
 ---
 这里主要列出一些在IOS学习工程中用到的知识点，包括他们的使用场景和注意事项等等。
+<!--more-->
 ### NSCharacterSet的用法
   首先要明白 *NSCharacterSet* 与 *NSSet* 二者之间没有关系，不要以为前者是后者的子集。
   *NSCharacterSet* 主要是用来预置一下char在里面作为一个集合，方便做过滤与对比。它的内部预置了很多默认的集合类型，比如：
@@ -74,10 +75,10 @@ date: "2017-04-13 13:50"
   NSScanner是用来对字符串做各种匹配赋值操作的类。有点类似javaScript中的 *eval* 方法，比如当你输入一个字符串 “1+1” 的时候，如果通过eval函数处理它会直接输出 ”2”，相当于智能的理解了字符串的含义。
 
   NSScanner常用来获取字符串中想要的值，比如int，string，等等。常用的主要有下面几个方法：
-  1. - (BOOL)scanString:string intoString:result;
-  2. - (BOOL)scanUpToString:string intoString:result;
-  3. - (BOOL)scanInt:result;
-  4. - (BOOL)scanUpToCharactersFromSet:set intoString:result;
+  1. (BOOL)scanString:string intoString:result;
+  2. (BOOL)scanUpToString:string intoString:result;
+  3. (BOOL)scanInt:result;
+  4. (BOOL)scanUpToCharactersFromSet:set intoString:result;
 
   首先来看第一个方法 *scanString* 表示把第一个参数识别的字符串放入后面的result中。如果后面的result传入null表示跳过前面一个参数的字符串。
 
@@ -119,3 +120,6 @@ date: "2017-04-13 13:50"
      the product is the apple iphone ,the price is 6999 ,the number is 10
      the product is the apple ipad ,the price is 4000 ,the number is 20
   ```
+
+### xcode中的图片资源管理
+  系统中的Images.xcassets目录中只能放入 *.png* 图片，普通的jpg图片只能放入普通文件夹中。
