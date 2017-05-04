@@ -21,4 +21,9 @@ git checkout -b 分支名称 tag名称 就可以了
 ### 如何把一个已经添加到代码库中的文件加入到ignore中
 通过下面到命令从版本库中把指定的文件删除
 > git rm --cached 文件名
-然后把该文件加入到 *.gitignore* 中，提交后就可以生效了
+
+然后把该文件加入到 *.gitignore* 中，提交后就可以生效了,如果是文件夹的话在rm 后面加上 **-f** 就可以了
+
+### 如何修改本地分支所追踪的远程分支
+假如现在你本地的一个分支追踪（track）是远程master分支，你想让它改为追踪远程develop分支
+> git branch --set--upstream-to=origin/[远程分支名称] [本地分支名称]
