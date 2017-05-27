@@ -34,6 +34,7 @@ if (self.page2 > 1) {
              self.data2 =  [[NSMutableArray alloc] initWithArray: responseObject];
             [self.header endRefreshing];
         }
+
 ```
 问题解决。
 
@@ -49,3 +50,18 @@ if (self.page2 > 1) {
 6. view的大小发生变化的时候会触发view的父类的这个方法。
 
 同时在官方文档中也说明，不要直接调用 *layoutSubView* 来更新view，应该通过 *setNeedsLayout* 来告诉系统在下一次更新UI的时候刷新view。如果需要立即刷新view的话，可以在调用完 *setNeedsLayout* 方法后调用 *layoutIfNeeded* 方法。
+
+### sdwebimage不显示图片
+今天新写了个工程，想通过sdwebimage加载网络图片，结果图片就是不出来，看了打印日志提示：
+>The resource could not be loaded because the App Transport Security policy requires the use of a secure connection
+
+细细一看发现图片的url不是https的，难怪了，把这个给忽略了。默认情况下在IOS9上是不支持http的。如果要增加支持需要在 **Info.plist** 中增加如下代码：
+```
+<key>NSAppTransportSecurity</key>
+<dict>
+    <key>NSAllowsArbitraryLoads</key>
+    <true/>
+</dict>
+```
+
+添加之后clean工程，图片就正常显示了。同理，在网络请求如果没有增加这个配置的话也是不行的。

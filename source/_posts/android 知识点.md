@@ -110,7 +110,11 @@ android知识点汇总
 
   [LayoutInflater.inflate方法解析][cc462667]
 
-
+## android创建自定义属性的注意事项
+  在主工程中使用自定义属性的时候命名空间使用的当前程序的包名，如果是在子工程中定义的属性，命名空间需要使用 “res-auto”
+  ```
+  xmlns:custom="http://schemas.android.com/apk/res-auto"
+  ```
 
 
 [cc462667]: http://bxbxbai.github.io/2014/11/19/make-sense-of-layoutinflater/ "LayoutInflater.inflate方法解析"
