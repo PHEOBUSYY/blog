@@ -1,0 +1,35 @@
+
+# html lang
+language: en
+
+# main menu navigation
+menu:
+  Home: /
+  Tags: /tags
+  Archives: /archives
+  Contact: /contact
+tabs:
+  All: /
+  Programming: /tags/programming
+  Reading: /tags/reading
+  Life: /tags/life
+  Note: /tags/note
+  Others: /tags/others
+  PMP: /tags/pmp
+  Github: /tags/github
+# Miscelaneous
+favicon: /favicon.ico
+
+# stylesheets loaded in the <head>
+stylesheets:
+- /css/bulma.css
+- /css/justyan_pug.css
+
+# scripts loaded in the end of the body
+scripts:
+- /js/justyan_pug.js
+
+node_sass:
+  outputStyle: nested
+  precision: 5
+  sourceComments: false

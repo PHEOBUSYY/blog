@@ -1,6 +1,10 @@
-layout: "post" title: "PMP考试心得"
 
-# date: "2018-02-25 15:07"
+---
+layout: "post"
+title: "PMP考试心得"
+date: "2018-02-25 15:07"
+tags: [pmp, blog, github]
+---
 
 报名的是17年12月9日的pmp考试，1月2日查询成绩之后，看到顺利通过了考试，前段时间一直很忙，最近才有了时间来整理考试心得。 <!-- more -->
 

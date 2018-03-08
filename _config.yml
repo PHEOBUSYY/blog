@@ -3,16 +3,17 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: pheobusyy
-subtitle:
-description: 个人博客
-author: justyan
+title: 欢迎来到JustYan的个人blog
+subtitle: 永远不要因为你觉得某个目标无法实现就否决它-《原则》
+description: JustYan的个人blog
+author: JustYan
 language: zh-CN
-timezone: Asia/Shanghai
-
+timezone: Asia/ShangHai
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 url: http://pheobusyy.github.io
+github: https://github.com/PHEOBUSYY
+logo: https://avatars2.githubusercontent.com/u/9360264?s=50&u=5e88482f7319a8ce65ed618bcede72ea97a7f5aa&v=4
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -23,7 +24,9 @@ public_dir: public
 tag_dir: tags
 archive_dir: archives
 category_dir: categories
+contact_dir: contact
 code_dir: downloads/code
+yy_dir: yy
 i18n_dir: :lang
 skip_render:
 
@@ -63,7 +66,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: vexo
+theme: justyan_pug
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
@@ -71,4 +74,4 @@ deploy:
    type: git
    repository: https://github.com/PHEOBUSYY/pheobusyy.github.io.git
    branch: master
-   message: 博客更新
+   message: upload blog

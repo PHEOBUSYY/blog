@@ -1,0 +1,42 @@
+section.hero.is-info.is-medium
+    .hero-head
+        nav.navbar.is-fixed-top.is-info
+            .container
+                .navbar-brand
+                    a.navbar-item
+                        img.navbar-circle(src= config.logo)
+                    span.navbar-burger.burger(data-target='navbarMenuHeroA')
+                        span
+                        span
+                        span
+                #navbarMenuHeroA.navbar-menu
+                    .navbar-end
+                        each url, label in theme.menu
+                            if(is_home() && url === config.root) || (url!== config.root && url_for(page.path).indexOf(url.toLowerCase()) > -1)
+                                a.navbar-item.is-active(href=url)= label
+                            else
+                                a.navbar-item(href=url)= label
+                        span.navbar-item
+                            a.button.is-info.is-inverted(href= config.github)
+                                span.icon
+                                    i.fab.fa-github
+                                span= 'Github'
+    .hero-body
+        .has-text-centered
+            h1.title= title
+            h2.subtitle= subTitle
+    .hero-foot
+        if (is_home())
+            nav.tabs.is-boxed
+                .container
+                    ul
+                        each url,tab in theme.tabs
+                            if !page.tag && tab === 'All'
+                                li.is-active
+                                    a(href=url)= tab
+                            else if page.tag && tab.toLowerCase() === page.tag.toLowerCase()
+                                li.is-active
+                                    a(href=url)= tab
+                            else
+                                li
+                                    a(href=url)= tab
