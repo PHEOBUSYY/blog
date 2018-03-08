@@ -320,3 +320,34 @@ body {
     border-radius: 6px;
   }
 }
+
+.categories{
+  @include public_padding(2rem);
+  text-align: center;
+  margin: 0 auto;
+  .category-list-item {
+    font-weight: bold;
+    padding: 1rem 1rem;
+  }
+  .category-list-link{
+
+  }
+  .category-list-count {
+    display: none;
+  }
+  ul {
+    list-style: null;
+  }
+}
+.contacts{
+  @include public_padding(2rem);
+  text-align: center;
+  margin: 0 auto;
+  ul {
+    list-style: null;
+  }
+  .contact {
+    font-weight: bold;
+    padding: 1rem 1rem;
+  }
+}

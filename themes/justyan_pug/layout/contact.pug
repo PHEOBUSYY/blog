@@ -2,12 +2,10 @@
 extends includes/layout.pug
 
 block content
-  - var categoriesList = list_categories({ show_count: false })
-  - var tagsList = list_tags({ show_count: false })
-  - var archivesList = list_archives({ show_count: false })
+    .contacts
+      ul
+          each url,item in theme.contacts
+              li.contact
+                a(href=url)!=item
 
-  div.archive
-    if !is_year()
-
-      h1 Contacttestetsteteset
 

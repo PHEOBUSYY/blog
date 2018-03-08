@@ -23,7 +23,7 @@ source_dir: source
 public_dir: public
 tag_dir: tags
 archive_dir: archives
-category_dir: categories
+category_dir: category
 contact_dir: contact
 code_dir: downloads/code
 yy_dir: yy

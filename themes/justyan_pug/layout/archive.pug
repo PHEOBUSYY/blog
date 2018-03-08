@@ -2,8 +2,6 @@
 extends includes/layout.pug
 
 block content
-  - var archivesList = list_archives({ 'show_count': true, 'class': 'archive', 'order': -1 })
-
   div.archive
         include includes/archive-posts.pug
         include includes/paginator.pug
