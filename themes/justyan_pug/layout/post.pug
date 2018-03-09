@@ -1,7 +1,0 @@
-extends includes/layout.pug
-
-block content
-  article#post
-    .toc!= toc(page.content)
-    != page.content
-  div!= paginator()
