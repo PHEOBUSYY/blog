@@ -20,7 +20,9 @@ RIA这一概念来源于《这样读书就够了》一书中提到的把知识�
 
 R=Read, 阅读原文片段
 I=Interpretation 引导促进
-A=Appropriation 拆为几用### 步骤
+A=Appropriation 拆为己用
+
+### 步骤
 RIA读书法具体步骤分为：
 
 R: 在读书时，遇到某一个心动片段，停下来，划出来
