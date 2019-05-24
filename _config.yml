@@ -3,10 +3,10 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 欢迎来到JustYan的个人blog
+title: 欢迎来到JustinYan的个人blog
 subtitle: 永远不要因为你觉得某个目标无法实现就否决它-《原则》
-description: JustYan的个人blog
-author: JustYan
+description: JustinYan的个人blog
+author: JustinYan
 language: zh-CN
 timezone: Asia/ShangHai
 # URL
@@ -66,7 +66,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: justyan
+theme: Next
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
